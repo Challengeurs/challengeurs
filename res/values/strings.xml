@@ -3,4 +3,5 @@
     <string name="app_name">challengeurs</string>
     <string name="launcher_name">@string/app_name</string>
     <string name="activity_name">@string/launcher_name</string>
+     <string name="facebook_app_id">1542464995972265</string>
 </resources>

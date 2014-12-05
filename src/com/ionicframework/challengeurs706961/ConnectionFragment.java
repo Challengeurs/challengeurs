@@ -2,10 +2,18 @@ package com.ionicframework.challengeurs706961;
 
 import java.util.Arrays;
 
+import com.facebook.HttpMethod;
+import com.facebook.Request;
+import com.facebook.Request.GraphUserCallback;
+import com.facebook.RequestAsyncTask;
+import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import com.facebook.widget.UserSettingsFragment;
+import com.user.User;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +22,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class ConnectionFragment extends Fragment {
-	
 	private static final String TAG = "ConnectionFragment"; 
+	private GraphUser graphUser;
 	private Session.StatusCallback callback = new Session.StatusCallback() {
 	    @Override
 	    public void call(Session session, SessionState state, Exception exception) {
@@ -32,6 +41,39 @@ public class ConnectionFragment extends Fragment {
 	    super.onCreate(savedInstanceState);
 	    uiHelper = new UiLifecycleHelper(getActivity(), callback);
 	    uiHelper.onCreate(savedInstanceState);
+		Session.openActiveSession(getActivity(), this, true, new Session.StatusCallback() {
+
+  		  @Override
+  		  public void call(Session session, SessionState state, Exception exception) {
+  		    if (session.isOpened() == true) {
+  		        Request.newMeRequest(session, new GraphUserCallback() {
+  		          
+  		            @Override
+  		            public void onCompleted(GraphUser user, Response response) {
+  		                if(user != null) {
+  		                    //on affiche le nom et le prénom de l'utilisateur
+  		                    Toast.makeText(getActivity(), user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
+  		                    Log.e(TAG, user.getFirstName()+" "+user.getLastName());
+  		                    Intent intent = new Intent();
+  		                    intent.putExtra("user", new User(user));
+  		                    getActivity().setResult(android.app.Activity.RESULT_OK, intent);
+  		                    getActivity().finish();
+  		                }
+  		                else {
+  		                    //on affiche un message d'erreur
+  		                    Toast.makeText(getActivity(), "Impossible de récupérer les informations", Toast.LENGTH_LONG).show();
+  		                }
+  		            }
+  		        }).executeAsync();
+  		       
+  		    }
+  	    else {
+  		        if(exception != null) {
+  		        //On affiche le message d'erreur
+  		        Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_LONG).show();
+  		      }
+  		    }
+  		  }});
 	}
 	
 	@Override
@@ -47,18 +89,26 @@ public class ConnectionFragment extends Fragment {
 	
 	private void onSessionStateChange(Session session, SessionState state, Exception exception) {
 	    if (state.isOpened()) {
-	        Log.i(TAG, "Logged in...");
+	    	Log.e(TAG,"Loggin in...");
 	    } else if (state.isClosed()) {
-	        Log.i(TAG, "Logged out...");
+	        Log.e(TAG, "Logged out...");
 	    }
 	}
 	
+	public GraphUser getGraphUser(){
+		return graphUser;
+	}
+	
+	public void setGraphUser(GraphUser graph){
+		this.graphUser = graph;
+	}
+/*	
 	@Override
 	public void onResume() {
 	    super.onResume();
 	    uiHelper.onResume();
 	}
-
+*/
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    super.onActivityResult(requestCode, resultCode, data);
@@ -81,6 +131,7 @@ public class ConnectionFragment extends Fragment {
 	public void onSaveInstanceState(Bundle outState) {
 	    super.onSaveInstanceState(outState);
 	    uiHelper.onSaveInstanceState(outState);
+	    
 	}
 	
 	

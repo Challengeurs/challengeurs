@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 public class ConnectionActivity extends FragmentActivity {
 
 	private ConnectionFragment mainFragment;
+
 	
 	@Override
     public void onCreate(Bundle savedInstanceState)

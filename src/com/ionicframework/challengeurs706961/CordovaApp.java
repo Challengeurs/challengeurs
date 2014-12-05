@@ -19,7 +19,9 @@
 
 package com.ionicframework.challengeurs706961;
 
+import android.content.Intent;
 import android.os.Bundle;
+
 import org.apache.cordova.*;
 
 public class CordovaApp extends CordovaActivity
@@ -29,6 +31,9 @@ public class CordovaApp extends CordovaActivity
     {
         super.onCreate(savedInstanceState);
         super.init();
+        
+        Intent intent = new Intent(CordovaApp.this,ConnectionActivity.class);
+        startActivity(intent);
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
     }

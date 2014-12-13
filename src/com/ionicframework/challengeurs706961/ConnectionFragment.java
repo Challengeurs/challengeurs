@@ -2,17 +2,16 @@ package com.ionicframework.challengeurs706961;
 
 import java.util.Arrays;
 
-import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Request.GraphUserCallback;
-import com.facebook.RequestAsyncTask;
+
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
-import com.facebook.widget.UserSettingsFragment;
+
 import com.user.User;
 
 import android.content.Intent;

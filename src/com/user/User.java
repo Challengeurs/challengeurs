@@ -6,7 +6,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-import com.facebook.internal.Logger;
 import com.facebook.model.GraphUser;
 
 public class User implements Parcelable{

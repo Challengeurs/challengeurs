@@ -34,6 +34,10 @@ public class User implements Parcelable{
 			Log.e(TAG,"impossible de récuperer la date");
 		}
 	}
+	
+	public String getFirstName(){
+		return this.firstname;
+	}
 	public int describeContents()
 	{
 		return 0;

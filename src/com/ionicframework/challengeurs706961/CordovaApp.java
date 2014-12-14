@@ -40,7 +40,7 @@ public class CordovaApp extends CordovaActivity
         super.init();
         
         Intent intent = new Intent(CordovaApp.this,ConnectionActivity.class);
-        startActivityForResult(intent, PICK_USER);
+      //  startActivityForResult(intent, PICK_USER);
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
     }

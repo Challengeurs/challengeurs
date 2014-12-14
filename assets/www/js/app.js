@@ -8,6 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
+	
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,7 +23,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+	openFB.init({appId: '1574361869449244'});
+	// var url = 'https://www.facebook.com/dialog/oauth?client_id=' +'1574361869449244' + '&response_type=token&redirect_uri=http://www.challengeurs.fr&scope=email';
+  // var loginWindow;
+  // loginWindow = window.open(url, '_blank', 'location=no,toolbar=no');
+  // loginWindow.addEventListener('loadstart', function(evt) {
 
+      // loginWindow.close();
+    
+  
+   // });
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
@@ -33,7 +43,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('tab', {
       url: "/tab",
       abstract: true,
-      templateUrl: "templates/tabs.html"
+      templateUrl: 'templates/tabs.html',
+	  controller : 'TabCtrl'
     })
 
     // Each tab has its own nav history stack:
@@ -44,6 +55,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-dash': {
           templateUrl: 'templates/tab-dash.html',
           controller: 'DashCtrl'
+        }
+      }
+    })
+	
+	 .state('tab.login', {
+      url: '/login',
+      views: {
+        'tab-login': {
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
         }
       }
     })
@@ -63,6 +84,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-friends': {
           templateUrl: 'templates/friend-detail.html',
           controller: 'FriendDetailCtrl'
+        }
+      }
+    })
+	
+	.state('tab.profile', {
+      url: '/profile',
+      views: {
+        'profile': {
+          templateUrl: 'templates/profile.html',
+          controller: 'ProfileCtrl'
         }
       }
     })

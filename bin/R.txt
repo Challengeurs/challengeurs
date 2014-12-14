@@ -84,7 +84,7 @@ int drawable com_facebook_list_divider 0x7f020013
 int drawable com_facebook_list_section_header_background 0x7f020014
 int drawable com_facebook_loginbutton_silver 0x7f020015
 int drawable com_facebook_logo 0x7f020016
-int drawable com_facebook_picker_default_separator_color 0x7f020031
+int drawable com_facebook_picker_default_separator_color 0x7f020034
 int drawable com_facebook_picker_item_background 0x7f020017
 int drawable com_facebook_picker_list_focused 0x7f020018
 int drawable com_facebook_picker_list_longpressed 0x7f020019
@@ -109,8 +109,11 @@ int drawable com_facebook_tooltip_blue_xout 0x7f02002b
 int drawable com_facebook_top_background 0x7f02002c
 int drawable com_facebook_top_button 0x7f02002d
 int drawable com_facebook_usersettingsfragment_background_gradient 0x7f02002e
-int drawable icon 0x7f02002f
-int drawable screen 0x7f020030
+int drawable ic_action_next_item 0x7f02002f
+int drawable ic_action_previous_item 0x7f020030
+int drawable ic_action_remove 0x7f020031
+int drawable icon 0x7f020032
+int drawable screen 0x7f020033
 int id authButton 0x7f090026
 int id bottom 0x7f090006
 int id box_count 0x7f090003
@@ -166,8 +169,8 @@ int layout com_facebook_search_bar_layout 0x7f03000c
 int layout com_facebook_tooltip_bubble 0x7f03000d
 int layout com_facebook_usersettingsfragment 0x7f03000e
 int layout connection_layout 0x7f03000f
-int string activity_name 0x7f07001f
-int string app_name 0x7f07001d
+int string activity_name 0x7f070021
+int string app_name 0x7f07001f
 int string com_facebook_choose_friends 0x7f070011
 int string com_facebook_dialogloginactivity_ok_button 0x7f070000
 int string com_facebook_image_download_unknown_error 0x7f07001c
@@ -197,8 +200,10 @@ int string com_facebook_tooltip_default 0x7f07001b
 int string com_facebook_usersettingsfragment_log_in_button 0x7f07000a
 int string com_facebook_usersettingsfragment_logged_in 0x7f07000b
 int string com_facebook_usersettingsfragment_not_logged_in 0x7f07000c
-int string facebook_app_id 0x7f070020
-int string launcher_name 0x7f07001e
+int string facebook_app_id 0x7f070022
+int string fb_app_id 0x7f07001d
+int string fb_app_name 0x7f07001e
+int string launcher_name 0x7f070020
 int style com_facebook_loginview_default_style 0x7f080000
 int style com_facebook_loginview_silver_style 0x7f080001
 int style tooltip_bubble_text 0x7f080002
